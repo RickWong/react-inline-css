@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>React Style component</title>
+
+	<!-- Simple page CSS (irrelevant). -->
+	<style>
+		html * {
+			box-sizing: border-box;
+			-webkit-font-smoothing: antialiased;
+		}
+		body {
+			background: #eee;
+			width: 400px;
+			margin: 60px auto;
+			font-family: monospace;
+		}
+	</style>
+
+	<!-- React + JSX. -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.10.0/JSXTransformer.js"></script>
+
+	<!-- React Style component! -->
+	<script src="react-style-0.1.0.js"></script>
+
+</head>
+<body>
+	<div id="profile0"></div>
+	<div id="profile1"></div>
+	<div id="profile2"></div>
+	<div id="profile3"></div>
+
+	<script type="text/jsx">
+		/** @jsx React.DOM */
+
+		/*
+		 * Smallest component in this example, has a default style.
+		 */
+		var Profile = React.createClass({
+			render: function () {
+				return (
+					<Style sheet="
+						.card {
+							cursor: pointer;
+							margin: 15px;
+							padding: 15px;
+							text-align: center;
+							height: 200px;
+						}
+						img {
+							width: 130px;
+							height: 130px;
+						}
+						p {
+							margin: 10px;
+						}
+						">
+						<div className="card">
+							<img src="mao.jpg" />
+							<p>{this.props.name || 'Default Mao'}</p>
+						</div>
+					</Style>
+				);
+			}
+		});
+
+		/*
+		 * Facebook style.
+		 */
+		var FacebookProfile = React.createClass({
+			render: function () {
+				return (
+					<Style sheet="
+						.card {
+							padding-top: 30px;
+							border-radius: 3px;
+							border: 1px solid rgb(208, 209, 213);
+							border-left-color: rgb(223, 224, 228);
+							border-right-color: rgb(223, 224, 228);
+							border-top-color: rgb(229, 230, 233);
+							background: linear-gradient(to bottom, rgba(255,255,255,1) 56%,rgba(204,204,204,1) 100%);
+						}
+						img {
+							vertical-align: middle;
+							padding: 4px;
+							background: #fff;
+							border: 1px solid #ccc;
+							border-radius: 3px;
+						}
+						p {
+							font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+							font-weight: bold;
+							color: rgb(59, 89, 152);
+							display: inline;
+						}
+					">
+						<Profile name={this.props.name}  />
+					</Style>
+				);
+			}
+		});
+
+		/*
+		 * Google style.
+		 */
+		var GoogleProfile = React.createClass({
+			render: function () {
+				return (
+					<Style sheet="
+						@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+						.card {
+							border-radius: 3px;
+							background-color: #fff;
+							box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+							border: 1px solid #d8d8d8;
+							border-bottom-width: 2px;
+							border-top-width: 0;
+							vertical-align: top;
+						}
+						img {
+							vertical-align: middle;
+							border-radius: 9999px;
+							border: 0;
+							padding: 0;
+							margin-right: 3px;
+						}
+						p {
+							font-family: Roboto, arial, sans-serif;
+							color: rgb(38, 38, 38);
+							display: block;
+						}
+					">
+						<Profile name={this.props.name} />
+					</Style>
+				);
+			}
+		});
+
+		/*
+		 * Twitter style.
+		 */
+		var TwitterProfile = React.createClass({
+			render: function () {
+				return (
+					<Style sheet="
+						.card {
+							border-radius: 5px;
+							background-color: rgb(178, 223, 218);
+							border: 1px solid #e1e8ed;
+							padding: 0;
+						}
+						img {
+							background: #fff;
+							border: 6px solid #fff;
+							border-radius: 6px;
+							margin: 15px;
+							box-shadow: rgba(136, 153, 166, 0.14902) 0px 1px 1px 0px;
+						}
+						p {
+							font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+							color: #292f33;
+							font-size: 18px;
+							display: block;
+							background: #f5f8fa;
+							border-radius: 0 0 5px 5px;
+							margin: 0;
+							padding: 10px;
+							bottom: 0;
+						}
+					">
+						<Profile name={this.props.name} />
+					</Style>
+				);
+			}
+		});
+
+		React.renderComponent(<Profile />, document.getElementById('profile0'));
+		React.renderComponent(<FacebookProfile name="Facebook Mao" />, document.getElementById('profile1'));
+		React.renderComponent(<GoogleProfile name="Google Mao" />, document.getElementById('profile2'));
+		React.renderComponent(<TwitterProfile name="Twitter Mao" />, document.getElementById('profile3'));
+	</script>
+</body>
+</html>
