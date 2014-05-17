@@ -68,3 +68,5 @@ You get:
 	</style>
 </div>
 ```
+
+For a cascaded effect, see the `index.html` demo.
