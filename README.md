@@ -3,7 +3,11 @@ React Style component (PoC)
 
 Make your React components visually predictable. React Style components allows you to cascade CSS stylesheets on your components, automatically namespacing them.
 
-## Example:
+### Demo:
+
+[Mao-mao-mao!](https://edealer.nl/mao)
+
+### Example:
 
 You write:
 
