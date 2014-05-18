@@ -5,7 +5,7 @@
  * Copyright 2014 Rick Wong
  * Released under the MIT license
  */
- (function (root, factory) {
+!(function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['react'], factory);
     } else if (typeof exports === 'object') {
@@ -14,6 +14,8 @@
         root.Style = factory(root.React);
     }
 }(this, function (React) {
+	"use strict";
+
     return React.createClass({
     	displayName: 'Style',
 		componentWillMount: function () {
