@@ -3,6 +3,8 @@ React Style component (PoC)
 
 Make your React components visually predictable. React Style components allows you to cascade CSS stylesheets on your components, automatically namespacing them.
 
+Inspired by the [SUIT CSS](https://suitcss.github.io/) methodology.
+
 ### Demo:
 
 [Mao-mao-mao!](https://edealer.nl/mao)
@@ -14,9 +16,6 @@ You write:
 ```javascript
 		/** @jsx React.DOM */
 
-		/*
-		 * Smallest component in this example, has a default style.
-		 */
 		var Profile = React.createClass({
 			render: function () {
 				return (
@@ -46,7 +45,7 @@ You write:
 		});
 ```
 
-You get:
+You get namespaced CSS that works on sub-components (comparable to HTML5 `<style scoped>`):
 
 ```html
 <div class="Style-4n412lnmi">
