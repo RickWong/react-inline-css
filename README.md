@@ -20,18 +20,18 @@ You write:
 			render: function () {
 				return (
 					<Style sheet="
-						.card {
+						& .card {
 							cursor: pointer;
 							margin: 15px;
 							padding: 15px;
 							text-align: center;
 							height: 200px;
 						}
-						img {
+						& img {
 							width: 130px;
 							height: 130px;
 						}
-						p {
+						& p {
 							margin: 10px;
 						}
 						">
