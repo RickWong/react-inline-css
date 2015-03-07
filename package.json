@@ -1,0 +1,34 @@
+{
+  "name": "react-inline-css",
+  "description": "Inline CSS in your React components, namespaced automatically.",
+  "version": "1.0.0",
+  "license": "BSD-3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RickWong/react-inline-css.git"
+  },
+  "homepage": "https://github.com/RickWong/react-inline-css",
+  "keywords": [
+    "react",
+    "inline",
+    "css"
+  ],
+  "main": "src/react-inline-css",
+  "scripts": {
+    "start": "eval 'webpack-dev-server --config webpack.client-watch.js >tmp/server.log 2>&1 & SERVER_PID=$!';     sleep 1;      open http://localhost:8080;       tail -f tmp/*.log;     kill $SERVER_PID;",
+    "build": "webpack -cv --display-error-details --config webpack.client.js",
+    "watch-client": "webpack -cv --display-error-details --config webpack.client-watch.js",
+    "watch": "eval 'npm run watch-client >tmp/client.log 2>&1 & CLIENT_PID=$!';     sleep 3;    npm run start;     kill $CLIENT_PID;"
+  },
+  "dependencies": {
+    "react": "0.12.2"
+  },
+  "devDependencies": {
+    "babel-core": "4.7.1",
+    "babel-loader": "4.1.0",
+    "json-loader": "0.5.1",
+    "react-hot-loader": "1.1.7",
+    "webpack": "1.7.2",
+    "webpack-dev-server": "1.7.0"
+  }
+}

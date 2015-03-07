@@ -1,15 +1,16 @@
-React Style component (PoC)
-==========
+![screenshot](https://i.imgur.com/7Pop4SZ.png?1)
 
-Make your React components visually predictable. React Style components allows you to cascade CSS stylesheets on your components, automatically namespacing them.
+# React Inline Css
+
+Make your React components visually predictable. React Inline Css  allows you to write traditional CSS stylesheets in your components, automatically namespacing them for you.
 
 Inspired by the [SUIT CSS](https://suitcss.github.io/) methodology.
 
-### Demo:
+## Demo:
 
 [Mao-mao-mao!](https://edealer.nl/mao)
 
-### Example:
+## Example:
 
 You write:
 
@@ -73,3 +74,21 @@ You get namespaced CSS that works on sub-components (comparable to HTML5 `<style
 ```
 
 For a cascaded effect, see the `index.html` demo.
+
+## Installation
+
+	npm install --save react-inline-css
+
+## Usage
+
+Run `npm run watch` in your terminal and play with `views/Main.jsx` to get a feel of
+the server-side rendering and client-side hot updates.
+
+## Community
+
+Let's start one together! After you ★Star this project, follow me [@Rygu](https://twitter.com/rygu)
+on Twitter.
+
+## License
+
+BSD 3-Clause license. Copyright © 2015, Rick Wong. All rights reserved.
