@@ -15,58 +15,56 @@ Inspired by the [SUIT CSS](https://suitcss.github.io/) methodology.
 You write:
 
 ```javascript
-		/** @jsx React.DOM */
-
-		var Profile = React.createClass({
-			render: function () {
-				return (
-					<Style sheet="
-						& .card {
-							cursor: pointer;
-							margin: 15px;
-							padding: 15px;
-							text-align: center;
-							height: 200px;
-						}
-						& img {
-							width: 130px;
-							height: 130px;
-						}
-						& p {
-							margin: 10px;
-						}
-						">
-						<div className="card">
-							<img src="mao.jpg" />
-							<p>Mao</p>
-						</div>
-					</Style>
-				);
-			}
-		});
+var Profile = React.createClass({
+	render: function () {
+		return (
+			<Style sheet="
+				& .card {
+					cursor: pointer;
+					margin: 15px;
+					padding: 15px;
+					text-align: center;
+					height: 200px;
+				}
+				& img {
+					width: 130px;
+					height: 130px;
+				}
+				& p {
+					margin: 10px;
+				}
+				">
+				<div className="card">
+					<img src="mao.jpg" />
+					<p>Mao</p>
+				</div>
+			</Style>
+		);
+	}
+});
 ```
 
 You get namespaced CSS that works on sub-components (comparable to HTML5 `<style scoped>`):
 
 ```html
-<div class="Style-4n412lnmi">
+<div id="InlineCss-1">
 	<div class="card">
 		<img src="mao.jpg">
 		<p>Mao</p>
 	</div>
 	<style>
-		.Style-4n412lnmi .card { 
+		#InlineCss-1 .card { 
 		  cursor: pointer; 
 		  margin: 15px; 
 		  padding: 15px; 
 		  text-align: center; 
 		  height: 200px; 
 		}
-		.Style-4n412lnmi img { 
+		#InlineCss-1 img { 
 		  width: 130px; 
 		  height: 130px; 
 		}
-		.Style-4n412lnmi p { 
+		#InlineCss-1 p { 
 		  margin: 10px; 
 		}
 	</style>
@@ -81,8 +79,7 @@ For a cascaded effect, see the `index.html` demo.
 
 ## Usage
 
-Run `npm run watch` in your terminal and play with `views/Main.jsx` to get a feel of
-the server-side rendering and client-side hot updates.
+Run `npm run watch` in your terminal and play with `examples.jsx` to get a feel of react-inline-css.
 
 ## Community
 
