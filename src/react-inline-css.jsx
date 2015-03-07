@@ -24,7 +24,7 @@ var InlineCss = React.createClass({
 	},
 	render() {
 		var Wrapper = this.props.wrapper || "div";
-		var namespace = this.props.namespace || "react-style-" + refCounter++;
+		var namespace = this.props.namespace || "InlineCss-" + refCounter++;
 		var transformedSheet = this._transformSheet(this.props.stylesheet, namespace);
 
 		return <Wrapper id={namespace}>
