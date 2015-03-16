@@ -6,7 +6,7 @@ var refCounter = 0;
  * @module InlineCss
  */
 var InlineCss = React.createClass({
-	displayName: 'InlineCss',
+	displayName: "InlineCss",
 	propTypes: {
 		stylesheet: React.PropTypes.string.isRequired,
 		namespace: React.PropTypes.string,
@@ -27,10 +27,15 @@ var InlineCss = React.createClass({
 		var namespace = this.props.namespace || "InlineCss-" + refCounter++;
 		var transformedSheet = this._transformSheet(this.props.stylesheet, namespace);
 
-		return <Wrapper id={namespace}>
-			{this.props.children}
-			<style scoped dangerouslySetInnerHTML={{__html: transformedSheet}} />
-		</Wrapper>;
+		return React.createElement(
+			Wrapper,
+			{id: namespace},
+			this.props.children,
+			React.createElement("style", {
+				scoped:                  true,
+				dangerouslySetInnerHTML: {__html: transformedSheet}
+			})
+		);
 	}
 });
 

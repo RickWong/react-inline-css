@@ -1,7 +1,7 @@
 {
   "name": "react-inline-css",
   "description": "Inline CSS in your React components, namespaced automatically.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": "BSD-3",
   "repository": {
     "type": "git",
@@ -11,24 +11,26 @@
   "keywords": [
     "react",
     "inline",
-    "css"
+    "css",
+    "react-component"
   ],
   "main": "src/react-inline-css",
   "scripts": {
-    "start": "eval 'webpack-dev-server --config webpack.client-watch.js >tmp/server.log 2>&1 & SERVER_PID=$!';     sleep 1;      open http://localhost:8080;       tail -f tmp/*.log;     kill $SERVER_PID;",
-    "build": "webpack -cv --display-error-details --config webpack.client.js",
-    "watch-client": "webpack -cv --display-error-details --config webpack.client-watch.js",
-    "watch": "eval 'npm run watch-client >tmp/client.log 2>&1 & CLIENT_PID=$!';     sleep 3;    npm run start;     kill $CLIENT_PID;"
+    "localhost": "sleep 2; which open && open http://localhost:8080",
+    "build": "webpack --verbose --colors --display-error-details --config webpack.client.js",
+    "watch-client": "webpack --verbose --colors --display-error-details --config webpack.client-watch.js && webpack-dev-server --config webpack.client-watch.js",
+    "watch": "concurrent --kill-others 'npm run watch-client' 'npm run localhost'"
   },
   "dependencies": {
-    "react": "^0.12.2"
+    "react": ">= 0.12.0"
   },
   "devDependencies": {
-    "babel-core": "4.7.1",
-    "babel-loader": "4.1.0",
+    "babel-core": "4.7.12",
+    "babel-loader": "4.2.0",
+    "concurrently": "0.0.5",
     "json-loader": "0.5.1",
-    "react-hot-loader": "1.1.7",
-    "webpack": "1.7.2",
+    "react-hot-loader": "1.2.3",
+    "webpack": "1.7.3",
     "webpack-dev-server": "1.7.0"
   }
 }
