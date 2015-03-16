@@ -1,3 +1,6 @@
+/**
+ * @copyright © 2015, Rick Wong. All rights reserved.
+ */
 var React = require("react");
 
 var refCounter = 0;
@@ -12,17 +15,17 @@ var InlineCss = React.createClass({
 		namespace: React.PropTypes.string,
 		wrapper: React.PropTypes.string
 	},
-	_transformSheet(stylesheet, namespace) {
+	_transformSheet: function (stylesheet, namespace) {
 		return stylesheet.
 			// Prettier output.
 			replace(/}\s*/ig, '\n}\n').
 			// Regular rules are namespaced.
 			replace(
 			/(^|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig,
-			(matched) => matched.replace(/&/g, `#${namespace}`)
+			function (matched) { return matched.replace(/&/g, "#" + namespace); }
 		);
 	},
-	render() {
+	render: function () {
 		var Wrapper = this.props.wrapper || "div";
 		var namespace = this.props.namespace || "InlineCss-" + refCounter++;
 		var transformedSheet = this._transformSheet(this.props.stylesheet, namespace);
