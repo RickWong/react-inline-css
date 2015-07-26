@@ -79,7 +79,7 @@ For a cascaded effect, see the `index.html` demo.
 
 ## Usage
 
-Run `npm run watch` in your terminal and play with `examples.jsx` to get a feel of react-inline-css.
+Run `npm run watch` in your terminal and play with `example/` to get a feel of react-inline-css.
 
 ### SASS / LESS
 
@@ -89,7 +89,7 @@ You can override the `&` as the selector to the current component. This is usefu
 ```javascript
 import React from "react";
 import InlineCss from "react-inline-css";
-const stylesheet = require("!raw!sass!./component.scss"); // Precompile SASS
+const stylesheet = require("!raw!sass!./UserComponent.scss");
 
 class UserComponent extends React.Component {
 	render () {
