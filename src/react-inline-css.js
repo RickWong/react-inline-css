@@ -11,24 +11,30 @@ var refCounter = 0;
 var InlineCss = React.createClass({
 	displayName: "InlineCss",
 	propTypes: {
+		componentName: React.PropTypes.string,
 		stylesheet: React.PropTypes.string.isRequired,
 		namespace: React.PropTypes.string,
 		wrapper: React.PropTypes.string
 	},
-	_transformSheet: function (stylesheet, namespace) {
+	_transformSheet: function (stylesheet, namespace, componentName) {
 		return stylesheet.
 			// Prettier output.
 			replace(/}\s*/ig, '\n}\n').
 			// Regular rules are namespaced.
 			replace(
 			/(^|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig,
-			function (matched) { return matched.replace(/&/g, "#" + namespace); }
+			function (matched) {
+				return matched.replace(componentName, "#" + namespace);
+			}
 		);
 	},
 	render: function () {
+		var componentName = this.props.componentName || "&";
 		var Wrapper = this.props.wrapper || "div";
 		var namespace = this.props.namespace || "InlineCss-" + refCounter++;
-		var transformedSheet = this._transformSheet(this.props.stylesheet, namespace);
+		var transformedSheet = this._transformSheet(
+			this.props.stylesheet, namespace, componentName
+		);
 
 		return React.createElement(
 			Wrapper,

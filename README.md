@@ -73,6 +73,55 @@ You get namespaced CSS that works on sub-components (comparable to HTML5 `<style
 
 For a cascaded effect, see the `index.html` demo.
 
+## Options
+
+### Component Name
+
+You can override the `&` as the default selector to the current component. This is useful if you want to require the css from an external file and make any precompilations steps with it. Here's an ES6 example with [SASS loader for Webpack](https://www.npmjs.com/package/sass-loader):
+
+**component.js**
+```javascript
+import React from 'react';
+import InlineCss from 'react-inline-css';
+let css = require('!raw!sass!./component.scss');
+
+class Component extends React.Component {
+  render() {
+  	return (
+  		<InlineCss componentName='base' stylesheet={css}>
+  			<div className='facebook'>Mao is no longer red!</div>
+  			<div className='google'>Mao is no longer red!</div>
+  			<div className='twitter'>Mao is no longer red!</div>
+  		</InlineCss>
+  	);
+  }
+};
+
+export default Transmit.createContainer(Component);
+```
+
+**component.css**
+```scss
+base {
+	color: red;
+
+	.facebook {
+	  color: blue;
+	}
+	.google {
+	  color: blue;
+	}
+	.twitter {
+	  color: green;
+	}
+}
+```
+
+**result**
+
+![screenshot](https://i.imgur.com/e3ErqTz.png?1)
+
+
 ## Installation
 
 	npm install --save react-inline-css
