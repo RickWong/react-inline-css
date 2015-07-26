@@ -1,16 +1,16 @@
 ![screenshot](https://i.imgur.com/7Pop4SZ.png?1)
 
-# React Inline Css
+# React Inline CSS
 
-Make your React components visually predictable. React Inline Css  allows you to write traditional CSS stylesheets in your components, automatically namespacing them for you.
+Make your React components visually predictable. React Inline CSS allows you to write traditional CSS stylesheets in your components, automatically namespacing them for you.
 
 Inspired by the [SUIT CSS](https://suitcss.github.io/) methodology.
 
-## Demo:
+## Demo
 
 [Mao-mao-mao!](https://edealer.nl/mao)
 
-## Example:
+## Example
 
 You write:
 
@@ -73,55 +73,6 @@ You get namespaced CSS that works on sub-components (comparable to HTML5 `<style
 
 For a cascaded effect, see the `index.html` demo.
 
-## Options
-
-### Component Name
-
-You can override the `&` as the default selector to the current component. This is useful if you want to require the css from an external file and make any precompilations steps with it. Here's an ES6 example with [SASS loader for Webpack](https://www.npmjs.com/package/sass-loader):
-
-**component.js**
-```javascript
-import React from 'react';
-import InlineCss from 'react-inline-css';
-let css = require('!raw!sass!./component.scss');
-
-class Component extends React.Component {
-  render() {
-  	return (
-  		<InlineCss componentName='base' stylesheet={css}>
-  			<div className='facebook'>Mao is no longer red!</div>
-  			<div className='google'>Mao is no longer red!</div>
-  			<div className='twitter'>Mao is no longer red!</div>
-  		</InlineCss>
-  	);
-  }
-};
-
-export default Transmit.createContainer(Component);
-```
-
-**component.css**
-```scss
-base {
-	color: red;
-
-	.facebook {
-	  color: blue;
-	}
-	.google {
-	  color: blue;
-	}
-	.twitter {
-	  color: green;
-	}
-}
-```
-
-**result**
-
-![screenshot](https://i.imgur.com/e3ErqTz.png?1)
-
-
 ## Installation
 
 	npm install --save react-inline-css
@@ -130,10 +81,57 @@ base {
 
 Run `npm run watch` in your terminal and play with `examples.jsx` to get a feel of react-inline-css.
 
+### SASS / LESS
+
+You can override the `&` as the selector to the current component. This is useful if you want to require precompiled stylesheets from an external file. Here's an example with [SASS loader for Webpack](https://www.npmjs.com/package/sass-loader):
+
+**UserComponent.js**
+```javascript
+import React from "react";
+import InlineCss from "react-inline-css";
+const stylesheet = require("!raw!sass!./component.scss"); // Precompile SASS
+
+class UserComponent extends React.Component {
+	render () {
+		return (
+			<InlineCss componentName="UserComponent" stylesheet={stylesheet}>
+				<div className="facebook">Mao is no longer red!</div>
+				<div className="google">Mao is no longer red!</div>
+				<div className="twitter">Mao is no longer red!</div>
+			</InlineCss>
+		);
+	}
+};
+```
+
+**UserComponent.scss**
+```scss
+UserComponent {
+	color: red;
+	.facebook {
+		color: blue;
+	}
+	.google {
+		color: blue;
+	}
+	.twitter {
+		color: green;
+	}
+}
+```
+
+**result**
+
+![screenshot](https://i.imgur.com/e3ErqTz.png?1)
+
 ## Community
 
 Let's start one together! After you ★Star this project, follow me [@Rygu](https://twitter.com/rygu)
-on Twitter.
+on Twitter. 
+
+### Contributors
+
+- [Danilo Moret](https://github.com/moret)
 
 ## License
 

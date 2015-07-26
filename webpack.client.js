@@ -9,7 +9,7 @@ module.exports = {
 	entry:   ["./src/example"],
 	output:  {
 		path:          path.join(__dirname, "static/dist"),
-		filename:      "example.js",
+		filename:      "[name].js",
 		chunkFilename: "[name].[id].js",
 		publicPath:    "dist/"
 	},
@@ -21,8 +21,9 @@ module.exports = {
 	],
 	module:  {
 		loaders: [
-			{include: /\.json$/, loaders: ["json-loader"]},
-			{include: /\.js$/, loaders: ["babel-loader"], exclude: /node_modules/}
+			{test: /\.json$/, loaders: ["json-loader"]},
+			{test: /\.js$/, loaders: ["babel-loader"], exclude: /node_modules/},
+			{test: /\.scss$/, loaders: ["raw-loader", "sass-loader"], exclude: /node_modules/}
 		]
 	},
 	resolve: {

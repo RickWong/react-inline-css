@@ -12,11 +12,11 @@ var InlineCss = React.createClass({
 	displayName: "InlineCss",
 	propTypes: {
 		componentName: React.PropTypes.string,
-		stylesheet: React.PropTypes.string.isRequired,
 		namespace: React.PropTypes.string,
+		stylesheet: React.PropTypes.string.isRequired,
 		wrapper: React.PropTypes.string
 	},
-	_transformSheet: function (stylesheet, namespace, componentName) {
+	_transformSheet: function (stylesheet, componentName, namespace) {
 		return stylesheet.
 			// Prettier output.
 			replace(/}\s*/ig, '\n}\n').
@@ -30,11 +30,9 @@ var InlineCss = React.createClass({
 	},
 	render: function () {
 		var componentName = this.props.componentName || "&";
-		var Wrapper = this.props.wrapper || "div";
-		var namespace = this.props.namespace || "InlineCss-" + refCounter++;
-		var transformedSheet = this._transformSheet(
-			this.props.stylesheet, namespace, componentName
-		);
+		var namespace     = this.props.namespace || "InlineCss-" + refCounter++;
+		var stylesheet    = this._transformSheet(this.props.stylesheet, componentName, namespace);
+		var Wrapper       = this.props.wrapper || "div";
 
 		return React.createElement(
 			Wrapper,
@@ -42,7 +40,7 @@ var InlineCss = React.createClass({
 			this.props.children,
 			React.createElement("style", {
 				scoped:                  true,
-				dangerouslySetInnerHTML: {__html: transformedSheet}
+				dangerouslySetInnerHTML: {__html: stylesheet}
 			})
 		);
 	}

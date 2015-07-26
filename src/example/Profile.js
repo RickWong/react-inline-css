@@ -6,7 +6,7 @@ import InlineCss from "../react-inline-css";
  */
 const Profile = React.createClass({
 	statics: {
-		css: () => `
+		css: (avatarSize) => `
 			& .card {
 				margin: 15px;
 				padding: 15px;
@@ -14,8 +14,8 @@ const Profile = React.createClass({
 				height: 200px;
 			}
 			& .card > img {
-				width: 130px;
-				height: 130px;
+				width: ${avatarSize}px;
+				height: ${avatarSize}px;
 			}
 			& .card > p {
 				margin: 10px;
@@ -24,7 +24,7 @@ const Profile = React.createClass({
 	},
 	render: function () {
 		return (
-			<InlineCss stylesheet={Profile.css()}>
+			<InlineCss stylesheet={Profile.css(130)}>
 				<div className="card">
 					<img src={this.props.image || 'mao.jpg'} />
 					<p>{this.props.name || 'Default Mao'}</p>
