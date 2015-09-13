@@ -22,11 +22,11 @@ var InlineCss = React.createClass({
 			replace(/}\s*/ig, '\n}\n').
 			// Regular rules are namespaced.
 			replace(
-			/(^|{|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig,
-			function (matched) {
-				return matched.replace(componentName, "#" + namespace);
-			}
-		);
+				/(^|{|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig,
+				function (matched) {
+					return matched.replace(new RegExp(componentName, "g"), "#" + namespace);
+				}
+			);
 	},
 	render: function () {
 		var componentName = this.props.componentName || "&";

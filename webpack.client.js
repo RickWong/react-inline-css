@@ -6,7 +6,7 @@ module.exports = {
 	cache:   false,
 	context: __dirname,
 	devtool: false,
-	entry:   ["./src/example"],
+	entry:   {example:"./src/example"},
 	output:  {
 		path:          path.join(__dirname, "static/dist"),
 		filename:      "[name].js",

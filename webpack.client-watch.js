@@ -1,8 +1,8 @@
 var webpack = require("webpack");
-var config = require("./webpack.client.js");
+var config  = require("./webpack.client.js");
 
-config.cache = true;
-config.debug = true;
+config.cache   = true;
+config.debug   = true;
 config.devtool = "eval";
 
 config.entry.WDS = "webpack-dev-server/client?http://localhost:8080";
@@ -12,13 +12,12 @@ config.module.postLoaders = [
 	{test: /\.js$/, loaders: ["react-hot"], exclude: /node_modules/}
 ];
 
-config.output.publicPath = "http://localhost:8080/dist/";
-config.output.hotUpdateMainFilename = "update/[hash]/update.json";
+config.output.publicPath             = "http://localhost:8080/dist/";
+config.output.hotUpdateMainFilename  = "update/[hash]/update.json";
 config.output.hotUpdateChunkFilename = "update/[hash]/[id].update.js";
 
 config.plugins = [
-	new webpack.HotModuleReplacementPlugin(),
-	new webpack.NoErrorsPlugin()
+	new webpack.HotModuleReplacementPlugin()
 ];
 
 config.devServer = {
