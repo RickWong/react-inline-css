@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import InlineCss from "./../react-inline-css"
 import Profile from "./Profile";
 import FacebookProfile from "./FacebookProfile";
@@ -47,4 +48,4 @@ const Main = React.createClass({
 	}
 });
 
-React.render(<Main />, document.getElementById("react-root"));
+ReactDOM.render(<Main />, document.getElementById("react-root"));
