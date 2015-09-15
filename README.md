@@ -18,7 +18,7 @@ You write:
 var Profile = React.createClass({
 	render: function () {
 		return (
-			<InlineCss stylesheet="
+			<InlineCss stylesheet={`
 				& .card {
 					cursor: pointer;
 					margin: 15px;
@@ -33,7 +33,7 @@ var Profile = React.createClass({
 				& p {
 					margin: 10px;
 				}
-				">
+				`}>
 				<div className="card">
 					<img src="mao.jpg" />
 					<p>Mao</p>
