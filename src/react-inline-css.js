@@ -1,8 +1,8 @@
 /**
  * @copyright © 2015, Rick Wong. All rights reserved.
  */
-var React = require("react");
-
+var React      = require("react");
+var assign     = React.__spread;
 var refCounter = 0;
 
 /**
@@ -11,11 +11,11 @@ var refCounter = 0;
 var InlineCss = React.createClass({
 	displayName: "InlineCss",
 	propTypes: {
+		namespace:     React.PropTypes.string,
 		componentName: React.PropTypes.string,
-		className: React.PropTypes.string,
-		namespace: React.PropTypes.string,
-		stylesheet: React.PropTypes.string.isRequired,
-		wrapper: React.PropTypes.string
+		stylesheet:    React.PropTypes.string.isRequired,
+		className:     React.PropTypes.string,
+		wrapper:       React.PropTypes.string
 	},
 	_transformSheet: function (stylesheet, componentName, namespace) {
 		return stylesheet.
@@ -30,15 +30,22 @@ var InlineCss = React.createClass({
 			);
 	},
 	render: function () {
-		var componentName = this.props.componentName || "&";
-		var className = this.props.className;
 		var namespace     = this.props.namespace || "InlineCss-" + refCounter++;
+		var componentName = this.props.componentName || "&";
 		var stylesheet    = this._transformSheet(this.props.stylesheet, componentName, namespace);
 		var Wrapper       = this.props.wrapper || "div";
 
+		var wrapperProps = assign({}, this.props, {
+			namespace:     undefined,
+			componentName: undefined,
+			stylesheet:    undefined,
+			wrapper:       undefined,
+			id:            namespace
+		});
+
 		return React.createElement(
 			Wrapper,
-			{id: namespace, className: className},
+			wrapperProps,
 			this.props.children,
 			React.createElement("style", {
 				scoped:                  true,
