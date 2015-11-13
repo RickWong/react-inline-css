@@ -34,12 +34,14 @@ var InlineCss = React.createClass({
 		var componentName = this.props.componentName || "&";
 		var stylesheet    = this._transformSheet(this.props.stylesheet, componentName, namespace);
 		var Wrapper       = this.props.wrapper || "div";
+		var className     = this.props.className || "";
 
 		var wrapperProps = assign({}, this.props, {
 			namespace:     undefined,
 			componentName: undefined,
 			stylesheet:    undefined,
 			wrapper:       undefined,
+			className:     className,
 			id:            namespace
 		});
 
