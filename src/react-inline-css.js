@@ -41,7 +41,7 @@ var InlineCss = React.createClass({
 			componentName: undefined,
 			stylesheet:    undefined,
 			wrapper:       undefined,
-			className:     className,
+			className:     undefined,
 			id:            namespace
 		});
 
