@@ -75,7 +75,7 @@ For a cascaded effect, see the `index.html` demo.
 
 ## Installation
 
-	npm install --save react-inline-css
+	npm install --save react-inline-css react
 
 ## Usage
 
