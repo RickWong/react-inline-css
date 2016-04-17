@@ -2,7 +2,7 @@
  * @copyright © 2015, Rick Wong. All rights reserved.
  */
 var React      = require("react");
-var assign     = React.__spread;
+var assign     = Object.assign ? Object.assign : React.__spread;
 var refCounter = 0;
 
 /**
