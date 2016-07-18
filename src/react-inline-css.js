@@ -1,58 +1,45 @@
 /**
  * @copyright © 2015, Rick Wong. All rights reserved.
  */
-var React      = require("react");
-var assign     = Object.assign ? Object.assign : React.__spread;
-var refCounter = 0;
+import React, { PropTypes, Component } from 'react'
 
 /**
  * @module InlineCss
  */
-var InlineCss = React.createClass({
-	displayName: "InlineCss",
-	propTypes: {
-		namespace:     React.PropTypes.string,
-		componentName: React.PropTypes.string,
-		stylesheet:    React.PropTypes.string.isRequired,
-		className:     React.PropTypes.string,
-		wrapper:       React.PropTypes.string
-	},
-	_transformSheet: function (stylesheet, componentName, namespace) {
-		return stylesheet.
-			// Prettier output.
-			replace(/}\s*/ig, '\n}\n').
-			// Regular rules are namespaced.
-			replace(
-				/(^|{|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig,
-				function (matched) {
-					return matched.replace(new RegExp(componentName, "g"), "#" + namespace);
-				}
-			);
-	},
-	render: function () {
-		var namespace     = this.props.namespace || "InlineCss-" + refCounter++;
-		var componentName = this.props.componentName || "&";
-		var stylesheet    = this._transformSheet(this.props.stylesheet, componentName, namespace);
-		var Wrapper       = this.props.wrapper || "div";
+export default class InlineCss extends Component {
 
-		var wrapperProps = assign({}, this.props, {
-			namespace:     undefined,
-			componentName: undefined,
-			stylesheet:    undefined,
-			wrapper:       undefined,
-			id:            namespace
-		});
+  static propTypes = {
+    namespace: PropTypes.string,
+    componentName: PropTypes.string,
+    stylesheet: PropTypes.string.isRequired,
+    wrapper: PropTypes.string
+  }
 
-		return React.createElement(
-			Wrapper,
-			wrapperProps,
-			this.props.children,
-			React.createElement("style", {
-				scoped:                  true,
-				dangerouslySetInnerHTML: {__html: stylesheet}
-			})
-		);
-	}
-});
+  static defaultProps = {
+    namespace: `inlineCss`,
+    componentName: '&',
+    wrapper: 'div'
+  }
 
-module.exports = InlineCss;
+  _transformSheet(stylesheet, componentName, namespace) {
+    return stylesheet.
+    replace(/}\s*/ig, '\n}\n'). // Regular rules are namespaced.
+    replace(/(^|{|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig, matched => matched.replace(new RegExp(componentName, 'g'), '#' + namespace))
+  }
+
+  render() {
+    const { namespace, componentName, stylesheet, wrapper, ...wrapperProps } = this.props
+    const id = namespace !== 'inlineCss' ? namespace : `${namespace}-${(Math.random().toString(36) + '00000000000000000').slice(2, 7 + 2)}`
+
+    return React.createElement(
+      wrapper, { id, ...wrapperProps },
+      this.props.children,
+      React.createElement('style', {
+        scoped: true,
+        dangerouslySetInnerHTML: {
+          __html: ::this._transformSheet(stylesheet, componentName, id)
+        }
+      })
+    )
+  }
+}
