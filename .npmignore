@@ -6,7 +6,6 @@ dist/
 .DS_Store
 
 static/
-src/example/
-src/example.*
+src/
 tmp/
 webpack.*.js
