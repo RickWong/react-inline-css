@@ -53,19 +53,19 @@ You get namespaced CSS that works on sub-components (comparable to HTML5 `<style
 		<p>Mao</p>
 	</div>
 	<style>
-		#InlineCss-1 .card { 
-		  cursor: pointer; 
-		  margin: 15px; 
-		  padding: 15px; 
-		  text-align: center; 
-		  height: 200px; 
+		#InlineCss-1 .card {
+		  cursor: pointer;
+		  margin: 15px;
+		  padding: 15px;
+		  text-align: center;
+		  height: 200px;
 		}
-		#InlineCss-1 img { 
-		  width: 130px; 
-		  height: 130px; 
+		#InlineCss-1 img {
+		  width: 130px;
+		  height: 130px;
 		}
-		#InlineCss-1 p { 
-		  margin: 10px; 
+		#InlineCss-1 p {
+		  margin: 10px;
 		}
 	</style>
 </div>
@@ -79,7 +79,7 @@ For a cascaded effect, see the `index.html` demo.
 
 ## Usage
 
-Run `npm run watch` in your terminal and play with `example/` to get a feel of react-inline-css.
+Run `npm run devserver` in your terminal and play with `example/` to get a feel of react-inline-css.
 
 ### SASS / LESS
 
@@ -127,11 +127,12 @@ UserComponent {
 ## Community
 
 Let's start one together! After you ★Star this project, follow me [@Rygu](https://twitter.com/rygu)
-on Twitter. 
+on Twitter.
 
 ### Contributors
 
 - [Danilo Moret](https://github.com/moret)
+- [Luigi Poole](https://github.com/luigiplr)
 
 ## License
 
