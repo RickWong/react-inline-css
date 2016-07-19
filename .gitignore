@@ -1,6 +1,8 @@
 .idea/
 node_modules/
+build/
 dist/
+
 *.log
 *.map
 .DS_Store
