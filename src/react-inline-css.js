@@ -24,7 +24,7 @@ export default class InlineCss extends Component {
   _transformSheet(stylesheet, componentName, namespace) {
     return stylesheet.
     replace(/}\s*/ig, '\n}\n'). // Regular rules are namespaced.
-    replace(/(^|{|}|;|,)\s*([&a-z0-9\-_\.:#\(\),>*\s]+)\s*(\{)/ig, matched => matched.replace(new RegExp(componentName, 'g'), '#' + namespace))
+    replace(/([^\r\n,{}]+)(,(?=[^}]*{)|\s*{)/ig, matched => matched.replace(new RegExp(componentName, 'g'), '#' + namespace))
   }
 
   render() {
