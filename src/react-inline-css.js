@@ -36,12 +36,13 @@ var InlineCss = React.createClass({
 		var Wrapper       = this.props.wrapper || "div";
 
 		var wrapperProps = assign({}, this.props, {
-			namespace:     undefined,
-			componentName: undefined,
-			stylesheet:    undefined,
-			wrapper:       undefined,
-			id:            namespace
+			id: namespace
 		});
+
+		delete wrapperProps.namespace;
+		delete wrapperProps.componentName;
+		delete wrapperProps.stylesheet;
+		delete wrapperProps.wrapper;
 
 		return React.createElement(
 			Wrapper,
