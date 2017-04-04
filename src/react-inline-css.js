@@ -18,14 +18,18 @@ var InlineCss = React.createClass({
 		wrapper:       React.PropTypes.string
 	},
 	_transformSheet: function (stylesheet, componentName, namespace) {
+		const prevDeclEndGroup = "(^|{|}|;|,)";
+		const commentGroup = "((?:\\s*(?:\\/\\*(?:[^\\*]|\\s|(?:[\\*](?!\\/)))*\\*\\/)*\\s*)*)";
+		const selectorGroup = "([&a-z0-9\\-~_=\\.:#^\\|\\(\\)\\[\\]\\$’”,>*\\s]+)";
+		const declStartGroup = "(\\{)";
 		return stylesheet.
 			// Prettier output.
 			replace(/}\s*/ig, '\n}\n').
 			// Regular rules are namespaced.
 			replace(
-				/(^|{|}|;|,)\s*([&a-z0-9\-~_=\.:#^\|\(\)\[\]\$'",>*\s]+)\s*(\{)/ig,
-				function (matched) {
-					return matched.replace(new RegExp(componentName, "g"), "#" + namespace);
+				new RegExp(prevDeclEndGroup + commentGroup + selectorGroup + commentGroup + declStartGroup, "ig"),
+				function (matched, p1, p2, p3, p4, p5, offset, string) {
+					return p1 + p2 + p3.replace(new RegExp(componentName, "g"), "#" + namespace) + p4 + p5;
 				}
 			);
 	},
