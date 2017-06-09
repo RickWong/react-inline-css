@@ -4,11 +4,13 @@
 var React      = require("react");
 var assign     = Object.assign ? Object.assign : React.__spread;
 var refCounter = 0;
+var createReactClass = require('create-react-class');
+
 
 /**
  * @module InlineCss
  */
-var InlineCss = React.createClass({
+var InlineCss = createReactClass({
 	displayName: "InlineCss",
 	propTypes: {
 		namespace:     React.PropTypes.string,
