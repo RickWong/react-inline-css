@@ -2,6 +2,7 @@
  * @copyright © 2015, Rick Wong. All rights reserved.
  */
 var React      = require("react");
+var PropTypes  = require("prop-types");
 var assign     = Object.assign ? Object.assign : React.__spread;
 var refCounter = 0;
 
@@ -11,11 +12,11 @@ var refCounter = 0;
 var InlineCss = React.createClass({
 	displayName: "InlineCss",
 	propTypes: {
-		namespace:     React.PropTypes.string,
-		componentName: React.PropTypes.string,
-		stylesheet:    React.PropTypes.string.isRequired,
-		className:     React.PropTypes.string,
-		wrapper:       React.PropTypes.string
+		namespace:     PropTypes.string,
+		componentName: PropTypes.string,
+		stylesheet:    PropTypes.string.isRequired,
+		className:     PropTypes.string,
+		wrapper:       PropTypes.string
 	},
 	_transformSheet: function (stylesheet, componentName, namespace) {
 		return stylesheet.
