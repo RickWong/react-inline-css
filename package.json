@@ -1,7 +1,7 @@
 {
   "name": "react-inline-css",
   "description": "Inline CSS in your React components, namespaced automatically.",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
