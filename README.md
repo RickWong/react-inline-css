@@ -132,6 +132,7 @@ on Twitter.
 ### Contributors
 
 - [Danilo Moret](https://github.com/moret)
+- [Will Butler](https://github.com/willbutler)
 
 ## License
 
