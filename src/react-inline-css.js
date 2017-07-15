@@ -33,6 +33,9 @@ var InlineCss = createReactClass({
 			);
 	},
 	render: function () {
+		if(this.props.counter){
+			refCounter = this.props.counter;	
+		}
 		var namespace     = this.props.namespace || "InlineCss-" + refCounter++;
 		var componentName = this.props.componentName || "&";
 		var stylesheet    = this._transformSheet(this.props.stylesheet, componentName, namespace);
