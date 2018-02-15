@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "prop-types": "^15.6.0",
-    "create-react-class": "^1.0.0"
+    "create-react-class": "^15.6.3"
   }
 }
