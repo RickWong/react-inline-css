@@ -23,7 +23,7 @@
     "watch": "concurrently 'npm run watch-client' 'npm run localhost'"
   },
   "devDependencies": {
-    "babel-core": "6.11.4",
+    "babel-core": "6.26.3",
     "babel-loader": "6.2.4",
     "babel-preset-es2015": "6.9.0",
     "babel-preset-react": "6.11.1",
